@@ -1,0 +1,22 @@
+{
+  "name": "alien-invaders",
+  "version": "1.0.0",
+  "description": "aplicacion web del videojuego alien-invaders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsalexRod/alien-invaders.git"
+  },
+  "keywords": [
+    "ES"
+  ],
+  "author": "OsalexRod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OsalexRod/alien-invaders/issues"
+  },
+  "homepage": "https://github.com/OsalexRod/alien-invaders#readme"
+}
