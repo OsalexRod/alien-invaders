@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/OsalexRod/alien-invaders/issues"
   },
-  "homepage": "https://github.com/OsalexRod/alien-invaders#readme"
+  "homepage": "https://github.com/OsalexRod/alien-invaders#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

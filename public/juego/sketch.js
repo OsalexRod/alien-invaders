@@ -1,11 +1,11 @@
 let nave;
 let enemigos = [];
 let balas = [];
-let img;
+//let img;
 
-function preload() {
-  img = loadImage('imagenes/enemigo-copia.svg');
-}
+//function preload() {
+//  img = loadImage('imagenes/enemigo-copia.svg');
+//}
 
 function setup() {
   createCanvas(400, 400);
@@ -18,14 +18,14 @@ function setup() {
 function dibujarBicho() {
   push();
   
-  image(img, 100, 100, 50, 50, 0, 0, img.width, img.height, COVER, CENTER , CENTER);
+  //image(img, 100, 100, 50, 50, 0, 0, img.width, img.height, COVER, CENTER , CENTER);
   point(100,100)
   pop();
 }
 
 function draw() {
   background(51);
-  dibujarBicho();
+  //dibujarBicho();
   for (let i = 0; i < balas.length; i++) {
     balas[i].mostrar();
     balas[i].mover();
