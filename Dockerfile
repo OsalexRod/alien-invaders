@@ -1,9 +1,13 @@
 FROM node:20.9.0-alpine3.18
 
-RUN mkdir -p /home/app
+RUN mkdir -p /usr/src/app
 
-COPY . /home/app
+WORKDIR /usr/src/app
 
-EXPOSE 3000
+COPY . .
 
-CMD [ "node", "/home/app/index.js" ]
+ENV NODE_SERVER_PORT=""
+
+EXPOSE $NODE_SERVER_PORT
+
+CMD [ "node", "/usr/src/app/index.js" ]
