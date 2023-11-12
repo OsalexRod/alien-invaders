@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN npm install
+
 ENV NODE_SERVER_PORT=""
 
 EXPOSE $NODE_SERVER_PORT
