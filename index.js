@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-const puerto = process.env.PORT || 8080;
+const puerto = process.env.NODE_SERVER_PORT || 3000;
 
 // Define la ruta completa al archivo index.html en el directorio raiz
 const indexPath = path.join(__dirname, 'index.html');
