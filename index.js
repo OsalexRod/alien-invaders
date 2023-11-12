@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path');
 
-const app = express()
+const app = express();
+
+const puerto = process.env.PORT || 8080;
 
 // Define la ruta completa al archivo index.html en el directorio raiz
 const indexPath = path.join(__dirname, 'index.html');
@@ -15,6 +17,6 @@ app.get('/', function (req, res) {
     res.sendFile(indexPath);
 })
 
-app.listen(8080, function () {
-    console.log('La aplicación está escuchando en el puerto 8080');
+app.listen(puerto, function () {
+    console.log(`La aplicación está escuchando en el puerto ${puerto}`);
 });
