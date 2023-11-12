@@ -1,0 +1,13 @@
+minikube start
+minikube pause
+minikube unpause
+minikube stop
+
+
+minikube dashboard
+
+
+minikube service alien-invaders-app-service --url
+
+
+minikube kubectl -- apply -f ./minikube-deploy-app
