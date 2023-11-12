@@ -1,6 +1,9 @@
 {
   "name": "alien-invaders",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.9.0"
+  },
   "description": "aplicacion web del videojuego alien-invaders",
   "main": "index.js",
   "scripts": {
