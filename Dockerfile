@@ -4,6 +4,6 @@ RUN mkdir -p /home/app
 
 COPY . /home/app
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD [ "node", "/home/app/index.js" ]
