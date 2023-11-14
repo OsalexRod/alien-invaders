@@ -3,11 +3,92 @@ minikube pause
 minikube unpause
 minikube stop
 
+minikube ip
 
 minikube dashboard
+
+
+minikube kubectl
+minikube kubectl options
 
 
 minikube service alien-invaders-app-service --url
 
 
 minikube kubectl -- apply -f ./minikube-deploy-app
+minikube kubectl -- delete -f ./minikube-deploy-app
+
+
+// para activar el token
+
+minikube kubectl -- apply -f ./token-kubernetes/jenkins-account.yaml
+minikube kubectl -- apply -f ./token-kubernetes/jenkins-account-token.yml
+
+minikube kubectl config view                            //para ip y el certificado
+minikube kubectl describe secret/jenkins-token-rk2mg    //para el token
+
+
+
+*para usar un contexto existente
+kubectl config use-context NOMBRE_DEL_CONTEXTO
+
+*para crear un nuevo contexto
+kubectl config set-context NOMBRE_DEL_CONTEXTO --cluster=NOMBRE_DEL_CLÚSTER --user=NOMBRE_DEL_USUARIO
+
+
+kubectl config current-context
+kubectl config get-contexts
+kubectl config get-clusters
+kubectl config get-users
+
+
+*para configurar un usuario
+kubectl config set-credentials NOMBRE_DEL_USUARIO --token=TU_TOKEN
+
+*para configurar un cluster
+kubectl config set-cluster NOMBRE_DEL_CLUSTER --server=DIRECCION_DEL_SERVIDOR --insecure-skip-tls-verify=true
+
+*para configurar un contexto
+kubectl config set-context NOMBRE_DEL_CONTEXTO --cluster=NOMBRE_DEL_CLUSTER --user=NOMBRE_DEL_USUARIO
+
+*para seleccionar un contexto
+kubectl config use-context NOMBRE_DEL_CONTEXTO
+Entendido, si siempre estás utilizando la etiqueta latest para tus imágenes en Docker Hub, la actualización de tu aplicación en Kubernetes puede hacerse utilizando el método de Rolling Update. Aquí hay un paso a paso:
+
+    Actualiza la Imagen en el Deployment:
+    Utiliza el comando kubectl set image para actualizar la imagen en tu Deployment. En tu caso, como siempre estás utilizando la etiqueta latest, simplemente actualizarás el Deployment con la misma etiqueta. Ejecuta el siguiente comando:
+
+    bash
+
+kubectl set image deployment/alien-invaders-app-deployment alien-invaders-app=alejandror
+
+
+kubectl config set-cluster minikube --server=https://127.0.0.1:37895
+kubectl config set-context minikube --cluster=minikube
+kubectl config use-context minikube
+
+
+
+
+
+comandos de prueba para el jenkinsfile
+//sh 'alias kubectl="minikube kubectl --"'
+                    //sh 'kubectl rollout restart -f ./minikube-deploy-app/deployment-app.yaml --token ${KUBERNETES_TOKEN} --server https://127.0.0.1:39507 --insecure-skip-tls-verify=true'
+                    //sh "minikube kubectl rollout restart ./minikube-deploy-app/deployment-app.yaml"
+                    //sh 'minikube kubectl config current-context'
+                    //sh 'minikube kubectl config use-context minikube'
+                    //sh "minikube kubectl apply ./minikube-deploy-app/deployment-app.yaml"
+                    //sh 'minikube kubectl config set-context minikube --cluster=minikube --user=minikube'
+                    //sh 'minikube kubectl version'
+                    //sh 'minikube kubectl -- cluster-info'
+                    //sh 'kubectl apply -f ./minikube-deploy-app --token ${KUBERNETES_TOKEN} --server https://127.0.0.1:37895 --insecure-skip-tls-verify=true'
+                    
+                    //sh 'kubectl config current-context'
+                    //sh 'kubectl config set-cluster minikube --server=https://127.0.0.1:37895 --insecure-skip-tls-verify=true'
+                    //withCredentials(bindings: [string(credentialsId: 'KUBERNETES_TOKEN', variable: 'api_token')]) {
+                    //    sh 'kubectl --token $api_token --server https://127.0.0.1:37895 --insecure-skip-tls-verify=true'
+                    //}
+
+                    //sh 'kubectl config set-credentials minikube --token=${KUBERNETES_TOKEN}'
+                    //sh 'kubectl config set-context minikube --cluster=minikube --user=minikube'
+                    //sh 'kubectl config use-context minikube'
