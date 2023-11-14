@@ -9,7 +9,7 @@ let balas = [];
 
 function setup() {
   createCanvas(400, 400);
-  print("atualizacion 1");
+  print("atualizacion 2");
   nave = new Nave();
   for (let i = 0; i < 5; i++) {
     enemigos[i] = new Enemigo(i * 40 + 40 , 60); 
