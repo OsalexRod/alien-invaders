@@ -42,6 +42,23 @@ kubectl config get-clusters
 kubectl config get-users
 
 
+
+***jenkins (tambien se podria meter a jenkins al grupo alejandro)
+
+
+sudo chmod -R 777 /home/alejandro/.kube
+sudo chmod 777 /home/alejandro/.kube/config
+
+
+sudo chown -R jenkins:jenkins /home/alejandro/.kube
+sudo chown jenkins:jenkins /home/alejandro/.kube/config
+
+
+
+sudo chmod 777 /home/alejandro/.minikube/profiles/minikube/client.key
+sudo chown jenkins:jenkins /home/alejandro/.minikube/profiles/minikube/client.key
+
+
 *para configurar un usuario
 kubectl config set-credentials NOMBRE_DEL_USUARIO --token=TU_TOKEN
 
