@@ -1,25 +1,28 @@
 let nave;
 let enemigos = [];
 let balas = [];
-//let img;
+let img;
 
-//function preload() {
-//  img = loadImage('imagenes/enemigo-copia.svg');
-//}
+function preload() {
+  img = loadImage('./public/imagenes/enemigo.svg');
+}
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(500, 500);
   print("atualizacion 3");
   nave = new Nave();
-  for (let i = 0; i < 5; i++) {
-    enemigos[i] = new Enemigo(i * 40 + 40 , 60); 
+  for (let j = 0; j < 3; j++) {
+    for (let i = 0; i < 5; i++) {
+      enemigos.push(new Enemigo(i * 50 + 60, j * 50 + 60)); 
+    }
   }
 }
 
 function dibujarBicho() {
   push();
-  
-  //image(img, 100, 100, 50, 50, 0, 0, img.width, img.height, COVER, CENTER , CENTER);
+  image(img, 75, 75, 50, 50);
+  stroke('purple');
+  strokeWeight(10);
   point(100,100)
   pop();
 }
@@ -30,17 +33,16 @@ function draw() {
   for (let i = 0; i < balas.length; i++) {
     balas[i].mostrar();
     balas[i].mover();
-    let indiceEnemigoGolpeado;
+
     for (let j = 0; j < enemigos.length; j++) {
       if (balas[i].golpea(enemigos[j])) {
-        print("bala golpeo a enemigo");
-        indiceEnemigoGolpeado = j;
+        print("bala golpeo a enemigo : ", j);
+        print("quitar enemigo");
+        enemigos.splice(j, 1);
+        balas[i].balaNoFuncional();
       }
     }
-    if (indiceEnemigoGolpeado) {
-      enemigos.splice(indiceEnemigoGolpeado, 1);
-      balas[i].balaNoFuncional();
-    } else if (balas[i].getPosicionY < 0) {
+    if (balas[i].getPosicionY < 0) {
       balas[i].balaNoFuncional();
       print("bala salio de area");
     }
@@ -51,7 +53,7 @@ function draw() {
   
   let enemigoTocoEsquina = false;
   for (let i = 0; i < enemigos.length; i++) {
-    enemigos[i].mostrar();
+    enemigos[i].mostrar(img);
     enemigos[i].mover();
     if (enemigos[i].getPosicionX + enemigos[i].getRadio > width || enemigos[i].getPosicionX - enemigos[i].getRadio < 0) {
       enemigoTocoEsquina = true;

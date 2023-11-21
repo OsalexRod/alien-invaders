@@ -6,10 +6,11 @@ class Enemigo {
     this.direccionX = 1;
   }
   
-  mostrar() {
+  mostrar(imagen) {
     push();
     fill(255, 0, 200);
-    ellipse(this.posicionX, this.posicionY, this.radio * 2, this.radio * 2);
+    //circle(this.posicionX, this.posicionY, this.radio * 2);
+    image(img, this.posicionX - this.radio, this.posicionY - this.radio, this.radio * 2, this.radio * 2);
     pop();
   }
   
