@@ -5,12 +5,12 @@ let imagenEnemigo;
 let imagenNave;
 
 function preload() {
-  imagenEnemigo = loadImage('./public/imagenes/enemigo.svg');
-  imagenNave = loadImage('./public/imagenes/nave.png');
+  imagenEnemigo = loadImage('./imagenes/enemigo.svg');
+  imagenNave = loadImage('./imagenes/nave.png');
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(windowWidth, windowHeight);
   nave = new Nave(imagenNave);
   for (let j = 0; j < 3; j++) {
     for (let i = 0; i < 5; i++) {
