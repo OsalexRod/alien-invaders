@@ -1,16 +1,17 @@
 class Enemigo {
-  constructor(posicionX, posicionY) {
+  constructor(imagen, posicionX, posicionY) {
+    this.imagen = imagen;
     this.posicionX = posicionX;
     this.posicionY = posicionY;
     this.radio = 15;
     this.direccionX = 1;
   }
   
-  mostrar(imagen) {
+  mostrar () {
     push();
-    fill(255, 0, 200);
+    //fill(255, 0, 200);
     //circle(this.posicionX, this.posicionY, this.radio * 2);
-    image(img, this.posicionX - this.radio, this.posicionY - this.radio, this.radio * 2, this.radio * 2);
+    image(this.imagen, this.posicionX - this.radio, this.posicionY - this.radio, this.radio * 2, this.radio * 2);
     pop();
   }
   
@@ -31,7 +32,7 @@ class Enemigo {
     this.posicionY += this.radio;
   }
   
-  mover() {
+  mover () {
     this.posicionX += this.direccionX;
   }
 }

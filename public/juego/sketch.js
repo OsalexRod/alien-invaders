@@ -1,35 +1,26 @@
 let nave;
 let enemigos = [];
 let balas = [];
-let img;
+let imagenEnemigo;
+let imagenNave;
 
 function preload() {
-  img = loadImage('./public/imagenes/enemigo.svg');
+  imagenEnemigo = loadImage('./public/imagenes/enemigo.svg');
+  imagenNave = loadImage('./public/imagenes/nave.png');
 }
 
 function setup() {
   createCanvas(500, 500);
-  print("atualizacion 3");
-  nave = new Nave();
+  nave = new Nave(imagenNave);
   for (let j = 0; j < 3; j++) {
     for (let i = 0; i < 5; i++) {
-      enemigos.push(new Enemigo(i * 50 + 60, j * 50 + 60)); 
+      enemigos.push(new Enemigo(imagenEnemigo, i * 50 + 60, j * 50 + 60)); 
     }
   }
 }
 
-function dibujarBicho() {
-  push();
-  image(img, 75, 75, 50, 50);
-  stroke('purple');
-  strokeWeight(10);
-  point(100,100)
-  pop();
-}
-
 function draw() {
   background(51);
-  //dibujarBicho();
   for (let i = 0; i < balas.length; i++) {
     balas[i].mostrar();
     balas[i].mover();
@@ -50,10 +41,9 @@ function draw() {
   nave.mostrar();
   nave.mover();
   
-  
   let enemigoTocoEsquina = false;
   for (let i = 0; i < enemigos.length; i++) {
-    enemigos[i].mostrar(img);
+    enemigos[i].mostrar();
     enemigos[i].mover();
     if (enemigos[i].getPosicionX + enemigos[i].getRadio > width || enemigos[i].getPosicionX - enemigos[i].getRadio < 0) {
       enemigoTocoEsquina = true;
@@ -65,8 +55,6 @@ function draw() {
     }
   }
   
-  
-  
   for (let i = 0; i < balas.length; i++) {
     if (!balas[i].getBalaFuncional) {
       balas.splice(i, 1);
@@ -76,7 +64,7 @@ function draw() {
 
 function keyPressed() {
   if (key === ' ') {
-    let nuevaBala = new Bala(nave.getposicionX, height - 20);
+    let nuevaBala = new Bala(nave.getposicionX, nave.getPosicionY - nave.getRadio);
     balas.push(nuevaBala);
   }
   

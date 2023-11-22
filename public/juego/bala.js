@@ -9,7 +9,7 @@ class Bala {
   mostrar() {
     push();
     noStroke();
-    fill(150, 0, 255);
+    fill('#fefda6');
     ellipse(this.posicionX, this.posicionY, this.radio * 2, this.radio * 2);
     pop();
   }
