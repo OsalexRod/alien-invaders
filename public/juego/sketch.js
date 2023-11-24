@@ -20,7 +20,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background('#e6f0fd');
   for (let i = 0; i < balas.length; i++) {
     balas[i].mostrar();
     balas[i].mover();
